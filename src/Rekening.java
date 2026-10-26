@@ -20,3 +20,19 @@ public class Rekening {
         return saldo;
     }
 
+    public boolean tarik(int jumlah) {
+        if (jumlah <= 0 || jumlah > saldo) {
+            return false;
+        }
+        saldo -= jumlah;
+        return true;
+    }
+
+    public void cetakInfo() {
+        System.out.printf("%s | %-6s | %12s%n", nomor, pemilik, formatRupiah(saldo));
+    }
+
+    private static String formatRupiah(int jumlah) {
+        return "Rp" + String.format("%,d", jumlah).replace(',', '.');
+    }
+}
